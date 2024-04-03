@@ -27,8 +27,8 @@ const httpDistribucion_area_destino = {
     },
     postAgregarDistribucion_area_destino: async (req, res) => {
         try {
-            const { Presupuesto_Asignado,Presupuesto_Actual, idAreaTematica, idDestino } = req.body
-            const Distribucion_area_destino = new distribucion_area_destino({ Presupuesto_Asignado,Presupuesto_Actual, idAreaTematica, idDestino })
+            const { Presupuesto_Asignado,Presupuesto_Actual, idAreaTematica, idDestino, year } = req.body
+            const Distribucion_area_destino = new distribucion_area_destino({ Presupuesto_Asignado,Presupuesto_Actual, idAreaTematica, idDestino, year })
 
             await Distribucion_area_destino.save()
             res.json({ Conexion_red_lote })
