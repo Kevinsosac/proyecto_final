@@ -11,8 +11,11 @@ import Conexion_dependenica_contrato from "./routes/conexio_dependencia_contrato
 import lote from "./routes/lote.js";
 import Disdependencia from "./routes/distribucion_dependencia.js"
 import pedido from "./routes/pedido.js"
+import proceso from "./routes/proceso.js"
 import detalle_pedido from "./routes/detalle_pedido.js"
+import DetSalida from  "./routes/detSalida.js"
 import dependencia from "./routes/dependencia.js";
+import dis_lote_depen from "./routes/distribucion_lote_contrato.js"
 import disdepenred from "./routes/distribucion_depen_red.js";
 import red from "./routes/red.js";
 import cors from 'cors'
@@ -24,6 +27,7 @@ app.use(cors());
 app.use(   "/usuario", usuario)
 app.use(   "/dislote_contrato", dislote_contrato)
 app.use(   "/dependencia", dependencia)
+app.use(   "/detSalida", DetSalida)
 app.use(   "/disdepenred", disdepenred)
 app.use(   "/red", red)
 app.use(   "/ficha", ficha)
@@ -32,9 +36,12 @@ app.use(   "/area", area)
 app.use(   "/conexiondepencontrato", Conexion_dependenica_contrato)
 app.use(   "/producto", producto)
 app.use(   "/pedido", pedido)
+app.use(   "/dislote_depen", dis_lote_depen)
 app.use(   "/lote", lote)
 app.use(   "/disdependencia", Disdependencia)
 app.use(   "/detalle_pedido", detalle_pedido)
+app.use(   "/proceso", proceso)
+
 
 mongoose.connect(process.env.mongoDB)
   .then(() => console.log('Connected!'));

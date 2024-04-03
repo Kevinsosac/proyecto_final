@@ -1,7 +1,7 @@
 import { Router } from "express";
 import httpLote from "../controllers/lote.js";
 import { check } from "express-validator";
-import { validarCampos  } from "../middelwares/validator.js";
+import  validarCampos   from "../middelwares/validator.js";
 import helpersLote from "../helpers/lote.js";
 
 

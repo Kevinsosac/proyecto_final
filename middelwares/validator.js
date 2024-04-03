@@ -15,6 +15,4 @@ const validarCampos = (req, res, next) => {
 }
 
 
-export {
-    validarCampos
-}
+export default validarCampos

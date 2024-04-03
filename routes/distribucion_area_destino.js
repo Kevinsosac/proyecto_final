@@ -1,7 +1,7 @@
 import { Router } from "express";
 import httpDistribucion_area_destino from "../controllers/distribucion_area_destino.js"
 import { check } from "express-validator";
-import { validarCampos } from "../middelwares/validator.js";
+import  validarCampos  from "../middelwares/validator.js";
 
 
 const router = new Router()

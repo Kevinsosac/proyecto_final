@@ -1,7 +1,7 @@
 import { Router } from "express";
 import httpconexion_dependencia_contrato from "../controllers/conexio_dependencia_contrato.js";
 import { check } from "express-validator";
-import {validarCampos} from "../middelwares/validator.js";
+import validarCampos from "../middelwares/validator.js";
 
 const router=new Router()
 
