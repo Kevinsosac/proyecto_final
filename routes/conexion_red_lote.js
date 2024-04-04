@@ -1,7 +1,7 @@
 import { Router } from "express";
 import httpConexion_red_lote from "../controllers/conexion_red_lote.js"
 import { check } from "express-validator";
-import { validarCampos } from "../middelwares/validator.js";
+import validarCampos from "../middelwares/validator.js";
 
 
 const router = new Router()

@@ -1,7 +1,7 @@
 import { Router } from "express";
 import httpFicha from "../controllers/ficha.js";
 import { check } from "express-validator";
-import { validarCampos  } from "../middelwares/validator.js";
+import validarCampos from "../middelwares/validator.js";
 import helpersFicha from "../helpers/ficha.js";
 
 

@@ -1,7 +1,7 @@
 import { Router } from "express";
 import httpproducto from "../controllers/producto.js";
 import { check } from "express-validator";
-import {validarCampos} from "../middelwares/validator.js";
+import validarCampos from "../middelwares/validator.js";
 import helpersProducto from "../helpers/producto.js"; // Importa la función de verificación
 
 const router=new Router()
@@ -27,7 +27,6 @@ router.post('/agregar',[
     check("unidadMedida", "La unidad de medida es obligatoria").not().isEmpty(),
     check("precioUnitario", "El precio unitario es obligatorio").not().isEmpty(),
     check("id_lote", "El lote es obligatorio").not().isEmpty(),
-    check("id_contrato", "El contrato es obligatorio").not().isEmpty(),
     check("iva", "El iva es obligatorio").not().isEmpty(),
     validarCampos
 ],httpproducto.postAgregarproducto );
@@ -39,7 +38,6 @@ router.put('/producto/:id',[
     check("unidadMedida", "La unidad de medida es obligatoria").not().isEmpty(),
     check("precioUnitario", "El precio unitario es obligatorio").not().isEmpty(),
     check("id_lote", "El lote es obligatorio").not().isEmpty(),
-    check("id_contrato", "El contrato es obligatorio").not().isEmpty(),
     check("iva", "El iva es obligatorio").not().isEmpty(),
     validarCampos,
 ], httpproducto.putproducto);

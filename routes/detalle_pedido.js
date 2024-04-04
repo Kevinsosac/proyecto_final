@@ -1,7 +1,7 @@
 import { Router } from "express";
 import httpdetalle_pedido from "../controllers/detalle_pedido.js";
 import { check } from "express-validator";
-import { validarCampos  } from "../middelwares/validator.js";
+import validarCampos from "../middelwares/validator.js";
 
 const router = new Router();
 
