@@ -167,6 +167,7 @@ registroUsuario: async (req, res) => {
       const {
         nombre,
         cedula,
+        correo,
         telefono,
         usuario,
         password,
@@ -175,6 +176,7 @@ registroUsuario: async (req, res) => {
       const usuarios = new Usuario({
         nombre,
         cedula,
+        correo,
         telefono,
         usuario,
         password,
@@ -193,8 +195,8 @@ registroUsuario: async (req, res) => {
 putEditarusuario: async (req, res) => {
     try {
         const { id } = req.params
-        const {nombre, apellido, telefono, usuario , password} = req.body
-        const usuarios = await Usuario.findByIdAndUpdate(id,{nombre, apellido, telefono, usuario , password}, { new: true })
+        const {nombre, correo,  apellido, telefono, usuario , password} = req.body
+        const usuarios = await Usuario.findByIdAndUpdate(id,{nombre, apellido, correo, telefono, usuario , password}, { new: true })
         const salt = bcryptjs.genSaltSync();
         usuarios.password = bcryptjs.hashSync(password, salt)
         await usuarios.save()
