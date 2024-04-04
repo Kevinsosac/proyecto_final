@@ -1,7 +1,7 @@
 import { Router } from "express";
-import httpDistribucion_lote_dependencia from "../controllers/distribucion_lote_dependencia";
+import httpDistribucion_lote_dependencia from "../controllers/distribucion_lote_dependencia.js"
 import { check } from "express-validator";
-import  validarCampos  from "../middelwares/validator";
+import  validarCampos  from "../middelwares/validator.js";
 
 
 const router = new Router()

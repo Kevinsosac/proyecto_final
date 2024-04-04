@@ -1,4 +1,4 @@
-import entrada from "../models/entrada";
+import entrada from "../models/entrada.js";
 
 const httEntrada = {
     getAllEntrada: async (req, res) => {

@@ -1,11 +1,8 @@
 import { Router } from "express";
 import { check } from "express-validator";
-import validarCampos from "../middlewares/validar.js";
+import validarCampos from "../middelwares/validator.js";
 import httpSalida from "../controllers/salida.js";
-import { validarJWT } from "../middlewares/validar-jwt.js";
-// import helpersUsuario from "../helpers/usuario.js";
-// import helpersDestino from "../helpers/destino.js";
-
+import { validarJWT } from "../middelwares/validar.js";
 const router = new Router();
 
 router.get("/all", validarJWT, httpSalida.getAllSalida);
@@ -15,7 +12,7 @@ router.get("/buscarId/:id",
     check().notEmpty(),
     validarCampos,
   ],
-  httpSalida.getSalidaPorId
+  httpSalida.getPorSalidaId
 );
 
 router.post("/agregar",
