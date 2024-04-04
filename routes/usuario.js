@@ -28,6 +28,7 @@ router.post('/agregar',[
     check("cedula", "la cedula es obligatoria").not().isEmpty(),
     check("cedula", "la cedula es obligatoria").custom(helpersUsuario.checkExistingUsuarioCode),
     check("telefono", "el telefono es obligatorio").not().isEmpty(),
+    check("correo", "el correo es obligatorio").not().isEmpty(),
     check("usuario", "el usuario es obligatorio").not().isEmpty(),
     check("usuario", "el usuario es obligatorio").custom(helpersUsuario.ExistingUsuario),
     check("password", "la contraseña es obligatoria").not().isEmpty(),
