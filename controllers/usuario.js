@@ -206,7 +206,7 @@ putEditarusuario: async (req, res) => {
 putusuarioInactivar: async (req, res) => {
     try {
       const { id } = req.params;
-      const usuario = await usuario.findByIdAndUpdate(id, { estado: 0 }, { new: true });
+      const usuario = await Usuario.findByIdAndUpdate(id, { estado: 0 }, { new: true });
       res.json({ usuario });
     } catch (error) {
       res.status(400).json({ error });
