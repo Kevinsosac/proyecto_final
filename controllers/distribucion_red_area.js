@@ -1,4 +1,4 @@
-import distribucion_red_area from "../models/distribucion_red_area";
+import distribucion_red_area from "../models/distribucion_red_area.js";
 
 const httpDistribucion_red_area ={
     getAllDistribucion: async (req, res) => {

@@ -1,4 +1,4 @@
-import distribucion_area_destino from "../models/distribucion_area_destino";
+import distribucion_area_destino from "../models/distribucion_area_destino.js";
 
 const httpDistribucion_area_destino = {
     getAllDistribucion_area_destino: async (req, res) => {
