@@ -3,7 +3,7 @@ import { generarJWT } from "../middelwares/validar.js"
 import Usuario from "../models/usuario.js";
 import nodemailer from 'nodemailer'
 
-const codigoEnviado = {}
+let codigoEnviado = {}
 
 function generarNumeroAleatorio() {
     let numeroAleatorio = Math.floor(Math.random() * 1000000);
@@ -19,7 +19,7 @@ const httpusuario = {
     codigoRecuperar: async (req, res) => {
         try {
           const { correo } = req.params;
-    
+          console.log(correo)
           const codigo = generarNumeroAleatorio();
     
           const transporter = nodemailer.createTransport({
@@ -53,6 +53,7 @@ const httpusuario = {
             }
           });
         } catch (error) {
+          console.log(error);
           res.status(500).json({ error });
         }
       },

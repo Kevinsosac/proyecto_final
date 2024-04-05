@@ -18,7 +18,9 @@ const router=new Router()
 // ], httpusuario.nuevaPassword);
 
 router.get('/usuario', httpusuario.getusuario)
-router.put('/contraseña', httpusuario.codigoRecuperar)
+router.get('/recuperar-codigo/:correo', [
+    check("correo").custom(helpersUsuario.existeCorreo)
+], httpusuario.codigoRecuperar)
 router.get('/usuario/:cedula',[
     check("cedula", "la cedula es obligatoria").not().isEmpty(),
     validarCampos
