@@ -7,6 +7,7 @@ const Proveedor = new mongoose.Schema(
         cedula: {type: Number, require:true},
         correo: {type: String, require:true},
         telefono:{type:Number, require:true},
+        empresa:{type:Number, require:true},
         estado:{type: Boolean, default:1},
     }
 )

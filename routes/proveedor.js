@@ -21,6 +21,7 @@ router.post('/agregar',[
     check("cedula", "La cedula es obligatoria").not().isEmpty(),
     check("correo", "La correo de medida es obligatoria").not().isEmpty(),
     check("telefono", "El telefono unitario es obligatorio").not().isEmpty(),
+    check("empresa", "El empresa unitario es obligatorio").not().isEmpty(),
     validarCampos
 ],httpproveedor.postAgregarproveedor );
 router.put('/producto/:id',[

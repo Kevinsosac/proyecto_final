@@ -29,9 +29,9 @@ getproveedornombre: async (req, res) =>{
 },
 postAgregarproveedor: async (req, res) => {
     try {
-        const { nombre, apellido , cedula, correo, telefono,} = req.body;
+        const { nombre, apellido , cedula, correo, telefono, empresa, } = req.body;
 
-        const productos = new Proveedor({nombre, apellido , cedula, correo, telefono,});
+        const productos = new Proveedor({nombre, apellido , cedula, correo, telefono, empresa,});
         await productos.save();
         res.json({ productos });
     } catch (error) {
@@ -41,8 +41,8 @@ postAgregarproveedor: async (req, res) => {
 putproveedor: async (req, res) => {
     try {
         const { id } = req.params
-        const { nombre, apellido , cedula, correo, telefono,} = req.body
-        const productos = await Proveedor.findByIdAndUpdate(id,{ nombre, apellido , cedula, correo, telefono,}, { new: true })
+        const { nombre, apellido , cedula, correo, telefono, empresa,} = req.body
+        const productos = await Proveedor.findByIdAndUpdate(id,{ nombre, apellido , cedula, correo, telefono, empresa,}, { new: true })
         await productos.save()
         res.json({ productos })
     } catch (error) {
