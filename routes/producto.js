@@ -28,6 +28,7 @@ router.post('/agregar',[
     check("precioUnitario", "El precio unitario es obligatorio").not().isEmpty(),
     check("id_lote", "El lote es obligatorio").not().isEmpty(),
     check("iva", "El iva es obligatorio").not().isEmpty(),
+    check("cantidad", "la cantidad es obligatorio").not().isEmpty(),
     validarCampos
 ],httpproducto.postAgregarproducto );
 router.put('/producto/:id',[
