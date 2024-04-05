@@ -28,7 +28,6 @@ const helpersUsuario = {
   
   existeCorreo: async (correo, req) => {
     const existe = await Usuario.findOne({ correo });
-
     if (!existe && req.req.method === "GET") {
       throw new Error(`El correo no se encuentra registrado`);
     }
@@ -40,7 +39,6 @@ const helpersUsuario = {
         throw new Error(`Ya existe ese correo en la base de datos!!! `);
       }
     }
-
     req.req.UsuarioUpdate = existe;
   },
 };
