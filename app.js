@@ -18,6 +18,7 @@ import dependencia from "./routes/dependencia.js";
 import dis_lote_depen from "./routes/distribucion_lote_contrato.js"
 import disdepenred from "./routes/distribucion_depen_red.js";
 import salida from "./routes/salida.js"
+import proveedor from "./routes/proveedor.js"
 import detSalida from "./routes/detSalida.js";
 import contrato from "./routes/contrato.js";
 import conexion_red_lote from "./routes/conexion_red_lote.js"
@@ -48,6 +49,7 @@ app.use(   "/entrada", entrada)
 app.use(   "/pedido", pedido)
 app.use(   "/dislote_depen", dis_lote_depen)
 app.use(   "/lote", lote)
+app.use(   "proveedor", proveedor)
 app.use(   "/contrato", contrato)
 app.use(   "/dislote_depen", dislote_depen)
 app.use(   "/disdependencia", Disdependencia)
