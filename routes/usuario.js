@@ -24,7 +24,10 @@ router.get('/recuperar-codigo/:correo', [
     validarCampos
 ], httpusuario.codigoRecuperar)
 
-
+router.get("/confirmar-codigo/:codigo", [
+    check('codigo', 'Ingrese el código').not().isEmpty(),
+    validarCampos
+  ], httpusuario.confirmarCodigo);
 router.get('/usuario/:cedula',[
     check("cedula", "la cedula es obligatoria").not().isEmpty(),
     validarCampos

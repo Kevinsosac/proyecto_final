@@ -57,7 +57,37 @@ const httpusuario = {
           res.status(500).json({ error });
         }
       },
+      confirmarCodigo: async (req, res) => {
+        try {
+          const { codigo } = req.params;
     
+          if (!codigoEnviado) {
+            return res.status(400).json({ error: "Código no generado" });
+          }
+    
+          const { codigo: codigoGuardado, fechaCreacion } = codigoEnviado;
+          const tiempoExpiracion = 30; // Tiempo de expiración en minutos
+    
+          const tiempoActual = new Date();
+          const tiempoDiferencia = tiempoActual - new Date(fechaCreacion);
+          const minutosDiferencia = tiempoDiferencia / (1000 * 60);
+    
+          if (minutosDiferencia > tiempoExpiracion) {
+            return res.status(400).json({ error: "El código ha expirado" });
+          }
+    
+          if (codigo === codigoGuardado) {
+            return res.json({ msg: "Código correcto" });
+          }
+    
+          return res.status(400).json({ error: "Código incorrecto" });
+        } catch (error) {
+          console.log(error);
+          return res.status(500).json({
+            error: "Error, hable con el WebMaster",
+          });
+        }
+      },
       confirmarCodigo: async (req, res) => {
         try {
           const { codigo } = req.params;
