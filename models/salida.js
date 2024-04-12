@@ -5,8 +5,8 @@ const Salida = new mongoose.Schema({
     fechaEntrega: {type:Date, require:true },
     idBodeguero: {type:mongoose.Schema.Types.ObjectId,ref:'Usuario', require:true},
     idPedido: {type:mongoose.Schema.Types.ObjectId,ref:'Pedido', require:true},
-    total: {type:Number},
-    entregado: {type:Boolean, default: 0},
+    total: {type:Number, require:true},
+    entregado: {type:Boolean, default: true},
     estado:{type:Boolean, default:0},
     createAT : {type:Date,default: Date.now }
 });

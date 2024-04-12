@@ -5,20 +5,17 @@ import httpSalida from "../controllers/salida.js";
 import { validarJWT } from "../middelwares/validar.js";
 const router = new Router();
 
-router.get("/all", validarJWT, httpSalida.getAllSalida);
-router.get("/buscarId/:id",
-  [
-    validarJWT,
-    check().notEmpty(),
-    validarCampos,
-  ],
-  httpSalida.getPorSalidaId
-);
+router.get("/all", httpSalida.getAllSalida);
+router.get("/buscarId/:id", httpSalida.getPorSalidaId);
 
 router.post("/agregar",
   [
     validarJWT,
-    check().notEmpty(),
+    check("numero", "el numero es obligatorio").not().isEmpty(),
+    check("fechaEntrega", "el fecha Entrega es obligatorio").not().isEmpty(),
+    check("idbodeguero", "el idbodeguero es obligatorio").not().isEmpty(),
+    check("idPedido", "el idPedido es obligatorio").not().isEmpty(),
+    check("total", "el total es obligatorio").not().isEmpty(),
     validarCampos,
   ],
   httpSalida.postSalida
