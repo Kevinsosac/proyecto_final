@@ -8,10 +8,9 @@ import { validarJWT } from "../middelwares/validar.js";
 
 const router = new Router();
 
-router.get("/all", validarJWT, httpDetSalida.getAlldetSalida);
+router.get("/all", httpDetSalida.getAlldetSalida);
 router.get("/buscarId/:id",
   [
-    validarJWT,
     check().notEmpty(),
     validarCampos,
   ],
@@ -20,7 +19,6 @@ router.get("/buscarId/:id",
 
 router.post("/agregar",
   [
-    validarJWT,
     check().notEmpty(),
     validarCampos,
   ],
