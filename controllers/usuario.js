@@ -122,48 +122,87 @@ const httpusuario = {
     
     
     
-    nuevaPassword: async (req, res) => {
-        try {
-          const { correo, codigo, password } = req.body;
-    
-          const { codigo: codigoGuardado, fechaCreacion } = codigoEnviado;
-          const tiempoExpiracion = 30; // Tiempo de expiración en minutos
-    
-          const tiempoActual = new Date();
-          const tiempoDiferencia = tiempoActual - new Date(fechaCreacion);
-          const minutosDiferencia = tiempoDiferencia / (1000 * 60);
-    
-          if (minutosDiferencia > tiempoExpiracion) {
-            return res.status(400).json({ error: "El código ha expirado" });
-          }
-    
-          if (codigo === codigoGuardado) {
-            codigoEnviado = {};
-    
-            const usuario = await Usuario.findOne({correo});
-    
-            const salt = bcryptjs.genSaltSync();
-            const newPassword = bcryptjs.hashSync(password, salt);
-    
-            await Usuario.findByIdAndUpdate(
-              usuario.id,
-              { password: newPassword },
-              { new: true }
-            );
-    
-            return res
-              .status(200)
-              .json({ msg: "Contraseña actualizada con éxito" });
-          }
-    
-          return res.status(400).json({ error: "Código incorrecto" });
-        } catch (error) {
-          console.log(error);
-          return res.status(500).json({
-            error: "Error, hable con el WebMaster",
-          });
-        }
-      },
+  putCambioPassword: async (req, res) => {
+    try {
+      const { id } = req.params;
+      const { password, newPassword } = req.body;
+      const usuario = await Usuario.findById(id);
+
+      if (!usuario) {
+        return res.status(404).json({ error: "Usuario no encontrado" });
+      }
+
+      const passAnterior = usuario.password;
+
+      const validPassword = bcryptjs.compareSync(
+        String(password),
+        String(passAnterior)
+      );
+
+      if (!validPassword) {
+        return res.status(401).json({ error: "Contraseña actual incorrecta" });
+      }
+
+      const salt = bcryptjs.genSaltSync();
+      const cryptNewPassword = bcryptjs.hashSync(newPassword, salt);
+
+      await Usuario.findByIdAndUpdate(
+        usuario.id,
+        { password: cryptNewPassword },
+        { new: true }
+      );
+
+      return res.status(200).json({ msg: "Contraseña actualizada con éxito" });
+    } catch (error) {
+      console.log(error);
+      return res
+        .status(500)
+        .json({ msgError: "Error interno del servidor", error });
+    }
+  },
+  nuevaPassword: async (req, res) => {
+    try {
+      const { codigo, password } = req.body;
+
+      const { codigo: codigoGuardado, fechaCreacion } = codigoEnviado;
+      const tiempoExpiracion = 30; 
+
+      const tiempoActual = new Date();
+      const tiempoDiferencia = tiempoActual - new Date(fechaCreacion);
+      const minutosDiferencia = tiempoDiferencia / (1000 * 60);
+
+      if (minutosDiferencia > tiempoExpiracion) {
+        return res.status(400).json({ error: "El código ha expirado" });
+      }
+
+      if (codigo === codigoGuardado) {
+        codigoEnviado = {};
+
+        const usuario = req.UsuarioUpdate;
+
+        const salt = bcryptjs.genSaltSync();
+        const newPassword = bcryptjs.hashSync(password, salt);
+
+        await Usuario.findByIdAndUpdate(
+          usuario.id,
+          { password: newPassword },
+          { new: true }
+        );
+
+        return res
+          .status(200)
+          .json({ msg: "Contraseña actualizada con éxito" });
+      }
+
+      return res.status(400).json({ error: "Código incorrecto" });
+    } catch (error) {
+      console.log(error);
+      return res.status(500).json({
+        error: "Error, hable con el WebMaster",
+      });
+    }
+  },
+
 getusuario: async (req, res) => {
     try {
         const usuario = await Usuario.find()
