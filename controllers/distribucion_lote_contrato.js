@@ -5,7 +5,7 @@ const httpdislote_contrato = {
 getdislote_contrato: async (req, res) => {
     try {
         const disdependencia = await Dislote_contrato.find().populate("id_contrato").populate("id_lote")
-        res.json({disdependencia})
+        res.json(disdependencia)
     } catch (error) {
         res.status(400).json({error})
     }

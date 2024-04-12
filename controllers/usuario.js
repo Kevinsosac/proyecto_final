@@ -176,7 +176,6 @@ registroUsuario: async (req, res) => {
       } = req.body;
       const usuarios = new Usuario({
         nombre,
-        cedula,
         correo,
         telefono,
         usuario,
