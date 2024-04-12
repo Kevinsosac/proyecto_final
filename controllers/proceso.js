@@ -4,12 +4,12 @@ const httpproceso = {
   //GET
   getproceso: async (req, res) => {
     try {
-      const area = await Proceso.find(); // Cambia la referencia a "cliente" por "area"
+      const proceso = await Proceso.find(); // Cambia la referencia a "cliente" por "proceso"
 
-      if (area.length === 0) {
-        res.json({ msg: "No hay areas registradas" });
+      if (proceso.length === 0) {
+        res.json({ msg: "No hay procesos registradas" });
       } else {
-        res.json({ area });
+        res.json({ proceso });
       }
     } catch (error) {
       res.status(400).json({ error });
@@ -19,12 +19,12 @@ const httpproceso = {
   getprocesoid: async (req, res) => {
     try {
       const { id } = req.params;
-      const area = await Proceso.findOne({ id }); // Cambia la referencia a "cliente" por "area"
+      const proceso = await Proceso.findOne({ id }); // Cambia la referencia a "cliente" por "proceso"
 
-      if (!area) {
-        res.json({ msg: "area no encontrada" });
+      if (!proceso) {
+        res.json({ msg: "proceso no encontrada" });
       } else {
-        res.json({ area });
+        res.json({ proceso });
       }
     } catch (error) {
       res.status(400).json({ error });
@@ -34,11 +34,11 @@ const httpproceso = {
   postagregarproceso: async (req, res) => {
     try {
       const { codigo, presupuesto, fecha } = req.body;
-      const area = new Proceso({ codigo, presupuesto, presupuestoDisponible:presupuesto, fecha});
+      const proceso = new Proceso({ codigo, presupuesto, presupuestoDisponible:presupuesto, fecha});
   
-      await area.save();
+      await proceso.save();
   
-      res.json({ area });
+      res.json({ proceso });
     } catch (error) {
       res.status(400).json({ error });
     }
@@ -48,8 +48,8 @@ const httpproceso = {
   putprocesoInactivar: async (req, res) => {
     try {
       const { id } = req.params;
-      const area = await Proceso.findByIdAndUpdate(id, { estado: 0 }, { new: true });
-      res.json({ area });
+      const proceso = await Proceso.findByIdAndUpdate(id, { estado: 0 }, { new: true });
+      res.json({ proceso });
     } catch (error) {
       res.status(400).json({ error });
     }
@@ -58,8 +58,8 @@ const httpproceso = {
   putprocesoActivar: async (req, res) => {
     try {
       const { id } = req.params;
-      const area = await Proceso.findByIdAndUpdate(id, { estado: 1 }, { new: true });
-      res.json({ area });
+      const proceso = await Proceso.findByIdAndUpdate(id, { estado: 1 }, { new: true });
+      res.json({ proceso });
     } catch (error) {
       res.status(400).json({ error });
     }
