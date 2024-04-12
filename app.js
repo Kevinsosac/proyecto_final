@@ -15,7 +15,6 @@ import proceso from "./routes/proceso.js"
 import detalle_pedido from "./routes/detalle_pedido.js"
 import DetSalida from  "./routes/detSalida.js"
 import dependencia from "./routes/dependencia.js";
-import dis_lote_contrato from "./routes/distribucion_lote_contrato.js"
 import disdepenred from "./routes/distribucion_depen_red.js";
 import salida from "./routes/salida.js"
 import proveedor from "./routes/proveedor.js"
@@ -47,7 +46,6 @@ app.use(   "/conexiondepencontrato", Conexion_dependenica_contrato)
 app.use(   "/producto", producto)
 app.use(   "/entrada", entrada)
 app.use(   "/pedido", pedido)
-app.use(   "/dislote_contrato", dis_lote_contrato)
 app.use(   "/lote", lote)
 app.use(   "/proveedor", proveedor)
 app.use(   "/contrato", contrato)
