@@ -29,7 +29,7 @@ const httpdetalle_pedido = {
         idpedido,
         idproducto,
       });
-      await Detalle_pedido.save();
+      await detalle_pedido.save();
       res.json(detalle_pedido);
     } catch (error) {
       res.status(400).json({ error });
