@@ -24,7 +24,6 @@ router.post(
     check("nivel_de_formacion", "Digite el nivel").not().isEmpty(),
     check("fecha_inicio", "fecha").not().isEmpty(),
     check("ficha_fin", "fecha").not().isEmpty(),
-    check("id_area", "El nombre de ficha obligatorio").notEmpty(),
     validarCampos 
   ],
   httpFicha.postFicha
