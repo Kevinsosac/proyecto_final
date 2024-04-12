@@ -12,22 +12,13 @@ router.get("/buscarid/:id", [
   validarCampos
 ], httppedido.getId);
 
-// router.put(
-//   "/pedido/id",
-//   [
-//     check("nombre", "Deseas cambiar el nombre").notEmpty(),
-//     check("numero", "Deseas cambiar el numero de ficha").notEmpty(),
-//     validarCampos,
-//   ],
-//   httppedido.putpedido
-// );
-
 router.post(
   "/agregar",
   [
-    check('fechacreacion', "Digite la fecha de creación").not().isEmpty(),
+    check('fechaentrega', "Digite la fecha de entrega").not().isEmpty(),
     check('idficha', "Digite el ID de IdFicha").not().isEmpty(),
     check('idficha', "No es un Mongo ID válido").isMongoId(),
+    check('total', "Digite el total del pedido").isMongoId(),
     check('idInstructorEncargado', "Digite el ID de InstructorEncargado").not().isEmpty(),
     check('idInstructorEncargado', "No es un Mongo ID válido").isMongoId(),
     validarCampos,
