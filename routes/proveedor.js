@@ -2,7 +2,6 @@ import { Router } from "express";
 import httpproveedor from "../controllers/proveedor.js";
 import { check } from "express-validator";
 import validarCampos from "../middelwares/validator.js";
-import helpersProducto from "../helpers/producto.js"; // Importa la función de verificación
 
 const router=new Router()
 
