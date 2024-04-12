@@ -5,8 +5,8 @@ const httpdetalle_pedido = {
     getAlldetalle_pedido: async (req, res) => {
         try {
             const detalle_pedido = await Detalle_pedido.find()
-                .populate("pedido")
-                .populate("producto")
+                .populate("idpedido")
+                .populate("idproducto")
             res.json({ detalle_pedido });
         } catch (error) {
             res.status(400).json({ error });
