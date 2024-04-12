@@ -10,7 +10,6 @@ router.get("/buscarId/:id", httpSalida.getPorSalidaId);
 
 router.post("/agregar",
   [
-    validarJWT,
     check("numero", "el numero es obligatorio").not().isEmpty(),
     check("fechaEntrega", "el fecha Entrega es obligatorio").not().isEmpty(),
     check("idBodeguero", "el idbodeguero es obligatorio").not().isEmpty(),
