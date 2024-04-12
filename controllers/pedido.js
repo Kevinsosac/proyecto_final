@@ -3,7 +3,7 @@ import Pedido from "../models/pedido.js";
 const httppedido = {
   getpedido: async (req, res) => {
     try {
-      const pedido = await Pedido.find().populate("idficha").populate("idInstructorEncargado");
+      const pedido = await Pedido.find().populate("codigo_ficha").populate("idInstructorEncargado");
       res.json({ pedido })
     } catch (error) {
       res.status(400).json({ error })
@@ -25,12 +25,13 @@ const httppedido = {
 
   postpedido: async (req, res) => {
     try {
-      const { fechacreacion, idficha, idInstructorEncargado, total, estado, createAd } = req.body
-      const pedido = new Pedido({ fechacreacion, idficha, idInstructorEncargado,total, estado, createAd })
+      const { fechacreacion, codigo_ficha,fechaentrega, idInstructorEncargado, total } = req.body
+      const pedido = new Pedido({ fechacreacion, codigo_ficha,fechaentrega, idInstructorEncargado,total })
       await pedido.save()
       res.json({ pedido })
     } catch (error) {
-      res.status(400).json({ error: "cara de verga" })
+      console.log(error);
+      res.status(400).json({ error: "Invalido" })
     }
 
   },
