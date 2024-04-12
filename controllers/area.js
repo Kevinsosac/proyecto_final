@@ -19,7 +19,7 @@ const httparea = {
   getareaid: async (req, res) => {
     try {
       const { _id } = req.params;
-      const area = await Area.findOne({ _id }); // Cambia la referencia a "cliente" por "area"
+      const area = await Area.findOne({ _id });
 
       if (!area) {
         res.json({ msg: "area no encontrada" });
