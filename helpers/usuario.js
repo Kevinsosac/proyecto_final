@@ -13,6 +13,16 @@ const helpersUsuario = {
         throw new Error("la cedula ya esta registrada en la base de datos.");
     }
   },
+  
+  existeCorreoNewPass: async(correo, req) => {
+    const existe = await Usuario.findOne({ correo });
+
+    if (!existe) {
+      throw new Error(`El correo no se encuentra registrado`);
+    }
+
+    req.req.UsuarioUpdate = existe;
+  },
   ExistingUsuario: async (usuario, req) => {
     const existUsuarioo = await Usuario.findOne({ usuario });
 
@@ -25,7 +35,13 @@ const helpersUsuario = {
          throw new Error("El nombre de usuario ya esta registrada en la base de datos.");
      }
   },
-  
+  validarPassword: async (password, req) => {
+    const vali = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d.*\d)(?=.*[@#$%^&+=!]).{8,}$/;
+    if (!vali.test(password)) {
+      throw new Error("La contraseña no cumple con los requisitos.");
+    }
+    return true;
+  },
   existeCorreo: async (correo, req) => {
     const existe = await Usuario.findOne({ correo });
     if (!existe && req.req.method === "GET") {
