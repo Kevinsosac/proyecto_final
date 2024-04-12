@@ -9,7 +9,7 @@ const httpred = {
       if (red.length === 0) {
         res.json({ msg: "No hay areas registradas" });
       } else {
-        res.json({ area });
+        res.json({ red });
       }
     } catch (error) {
       res.status(400).json({ error });
