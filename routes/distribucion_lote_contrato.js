@@ -18,7 +18,7 @@ router.put('/dislote_contrato/:id',[
     check("id_lote", "el telefono es obligatorio").not().isEmpty(),
     check("presupuesto", "el telefono es obligatorio").not().isEmpty(),
 ], httpdislote_contrato.putEditardislote_contrato);
-router.put('/dislote_contrato/activar/:id', httpdislote_contrato.putdislote_contratoInactivar)
-router.put('/dislote_contrato/inactivar/:id', httpdislote_contrato.putdislote_contratoActivar)
+router.put('/dislote_contrato/inactivar/:id', httpdislote_contrato.putdislote_contratoInactivar)
+router.put('/dislote_contrato/activar/:id', httpdislote_contrato.putdislote_contratoActivar)
 
 export default router
