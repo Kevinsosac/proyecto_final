@@ -1,13 +1,13 @@
-import detalle_pedido from "../models/detalle_pedido.js"
+import Detalle_pedido from "../models/detalle_pedido.js"
 
 const httpdetalle_pedido = {
     // GET
     getAlldetalle_pedido: async (req, res) => {
         try {
-            const Detalle_pedido = await detalle_pedido.find()
+            const detalle_pedido = await Detalle_pedido.find()
                 .populate("pedido")
                 .populate("producto")
-            res.json({ Detalle_pedido });
+            res.json({ detalle_pedido });
         } catch (error) {
             res.status(400).json({ error });
         }
@@ -16,10 +16,10 @@ const httpdetalle_pedido = {
     getdetalle_pedidoid: async (req, res) => {
         try {
             const { id } = req.params
-            const Detalle_pedido = await detalle_pedido.findById({ id })
+            const detalle_pedido = await Detalle_pedido.findById({ id })
                 .populate("idpedido", "fechacreacion")
                 .populate("idproductor", "nombre", "precioUnitario");
-            res.json({ Detalle_pedido })
+            res.json({ detalle_pedido })
         } catch (error) {
             res.json({ error })
         }
@@ -28,11 +28,11 @@ const httpdetalle_pedido = {
     postdetalle_pedido: async (req, res) => {
         try{
             const { cantidad , idpedido, idproducto } = req.body;
-            const Detalle_pedido = new detalle_pedido({
+            const detalle_pedido = new Detalle_pedido({
                 cantidad , idpedido, idproducto
             });
             await Detalle_pedido.save();
-            res.json(Detalle_pedido)
+            res.json(detalle_pedido)
         } catch (error){
             res.status(400).json({ error }) 
         }
@@ -56,12 +56,12 @@ const httpdetalle_pedido = {
     putdetalle_pedidoInactivar: async (req, res) => {
             try {
               const { id } = req.params;
-              const Detalle_pedido = await detalle_pedido.findByIdAndUpdate(
+              const detalle_pedido = await Detalle_pedido.findByIdAndUpdate(
                 id,
                 { estado: 0 },
                 { new: true }
               );
-              res.json(Detalle_pedido);
+              res.json(detalle_pedido);
             } catch (error) {
               res.status(400).json({ error });
             }
@@ -70,12 +70,12 @@ const httpdetalle_pedido = {
     putdetalle_pedidoActivar: async (req, res) => {
             try {
               const { id } = req.params;
-              const Detalle_pedido = await detalle_pedido.findByIdAndUpdate(
+              const detalle_pedido = await Detalle_pedido.findByIdAndUpdate(
                 id,
                 { estado: 1 },
                 { new: true }
               );
-              res.json(Detalle_pedido);
+              res.json(detalle_pedido);
             } catch (error) {
               res.status(400).json({ error });
             }
