@@ -20,7 +20,7 @@ router.post(
     check("codigo_ficha", "El numero de la ficha debe ser obligatorio").notEmpty(),
     check("codigo_ficha", "El numero de la ficha debe tener 7 digitos").isLength({max:7}),
     check("codigo_ficha", "El numero de la ficha debe ser obligatorio").custom(helpersFicha.checkExistingFichatCode),
-    check("nombre", "El nombre de ficha obligatorio").notEmpty(),
+    // check("nombre", "El nombre de ficha obligatorio").notEmpty(),
     check("nivel_de_formacion", "Digite el nivel").not().isEmpty(),
     check("fecha_inicio", "fecha").not().isEmpty(),
     check("ficha_fin", "fecha").not().isEmpty(),
