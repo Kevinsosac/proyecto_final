@@ -18,7 +18,7 @@ router.post(
     check('fechaentrega', "Digite la fecha de entrega").not().isEmpty(),
     check('idficha', "Digite el ID de IdFicha").not().isEmpty(),
     check('idficha', "No es un Mongo ID válido").isMongoId(),
-    check('total', "Digite el total del pedido").isMongoId(),
+    check('total', "Digite el total del pedido").not().isEmpty(),
     check('idInstructorEncargado', "Digite el ID de InstructorEncargado").not().isEmpty(),
     check('idInstructorEncargado', "No es un Mongo ID válido").isMongoId(),
     validarCampos,
