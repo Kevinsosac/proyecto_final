@@ -3,7 +3,7 @@ import Conexio_dependencia_contrato from "../models/conexio_dependencia_contrato
 const httpconexion_dependencia_contrato = {
 getconexion_dependencia_contrato: async (req, res) => {
     try {
-        const depen = await dependencia.find()
+        const depen = await Conexio_dependencia_contrato.find()
         res.json({depen})
     } catch (error) {
         res.status(400).json({error})
