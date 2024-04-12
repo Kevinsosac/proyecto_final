@@ -6,7 +6,7 @@ const Distribucion_area_destino = new mongoose.Schema(
         Presupuesto_Actual:{type:Number,require:true},
         iddistribucionredArea:{type:mongoose.Schema.Types.ObjectId, ref:'Distribucion_red_area', require:true},
         idDestino:{type:mongoose.Schema.Types.ObjectId, ref:'ficha', require:true},
-        year: {type: Date, require: true},
+        year: {type: String, require: true},
         createAd: {type:Date, default:Date.now},
         estado : { type: Boolean, default:1},
     }
